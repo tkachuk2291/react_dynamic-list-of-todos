@@ -27,20 +27,26 @@ export const TodoList: React.FC<TodoListProps>= ({ todoQuery , todoSearchQuery }
 
 
 
-  let filteredTodos = [...todos];
+  const filterTodos = (todos: Todo[], query: string, searchQuery: string) => {
+    let filteredTodos = [...todos];
 
-  if (todoQuery === "completed") {
-    filteredTodos = filteredTodos.filter((todo) => todo.completed);
-  } else if (todoQuery === "active") {
-    filteredTodos = filteredTodos.filter((todo) => !todo.completed);
-  }
+    if (query === "completed") {
+      filteredTodos = filteredTodos.filter(todo => todo.completed);
+    } else if (query === "active") {
+      filteredTodos = filteredTodos.filter(todo => !todo.completed);
+    }
 
-  if (todoSearchQuery) {
-    filteredTodos = filteredTodos.filter((todo) =>
-      todo.title.toLowerCase().includes(todoSearchQuery.toLowerCase())
-    );
-  }
+    if (searchQuery) {
+      filteredTodos = filteredTodos.filter(todo =>
+        todo.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
 
+    return filteredTodos;
+  };
+
+
+  const visibleTodos = filterTodos(todos, todoQuery, todoSearchQuery);
 
   return (
     <>
@@ -62,7 +68,7 @@ export const TodoList: React.FC<TodoListProps>= ({ todoQuery , todoSearchQuery }
           </thead>
 
           <tbody>
-            {filteredTodos.map(todo => (
+            {visibleTodos.map(todo => (
               <tr data-cy="todo" className={selectTodo?.id  === todo.id ? "has-background-info-light" : ''} key={todo.id}>
                 <td className="is-vcentered">{todo.id}</td>
                 <td className="is-vcentered">
