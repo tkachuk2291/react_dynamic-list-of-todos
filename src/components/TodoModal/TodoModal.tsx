@@ -20,11 +20,8 @@ export const TodoModal: React.FC <TodoModalProps>= ({selectedTodo , setSelectTod
   useEffect(() => {
     setClosingButton(true)
     setLoading(true)
-    setTimeout(() => {
-
       getUser(selectedTodo.userId).then(setSelectedUserId)
         .finally(() => setLoading(false))
-    }, 100)
   } , [selectedTodo]);
 
 

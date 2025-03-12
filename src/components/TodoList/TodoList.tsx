@@ -16,13 +16,11 @@ export const TodoList: React.FC<TodoListProps>= ({ todoQuery , todoSearchQuery }
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
       getTodos()
         .then((data) => {
           setTodos(data);
         })
         .finally(() => setLoading(false));
-    }, 100);
   }, []);
 
 
