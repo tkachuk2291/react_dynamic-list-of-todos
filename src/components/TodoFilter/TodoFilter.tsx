@@ -7,7 +7,6 @@ export interface TodoFilterProps {
 }
 
 export const TodoFilter: React.FC<TodoFilterProps> = ({setTodoQuery , setTodoSearchQuery , todoSearchQuery}) => {
-  // const [formValue , setFormValue] = useState('all')
   return (
     <form className="field has-addons">
       <p className="control">
