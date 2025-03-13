@@ -2,13 +2,13 @@ import { Todo } from '../../types/Todo';
 import React from 'react';
 import cls from 'classnames';
 
-export interface TodoItem {
+export interface Props {
   todoItem: Todo;
   setSelectTodo: (todo: Todo | null) => void;
   selectTodo: Todo | null;
 }
 
-export const TodoItem: React.FC<TodoItem> = ({
+export const TodoItem: React.FC<Props> = ({
   todoItem,
   setSelectTodo,
   selectTodo,

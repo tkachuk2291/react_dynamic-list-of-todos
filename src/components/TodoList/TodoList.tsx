@@ -69,7 +69,7 @@ export const TodoList: React.FC<TodoListProps>= ({ todoQuery , todoSearchQuery }
           </thead>
 
           {visibleTodos.map(todo  => (
-          <TodoItem  todoItem={todo} setSelectTodo={setSelectTodo} selectTodo={selectTodo} />
+          <TodoItem  todoItem={todo} setSelectTodo={setSelectTodo} selectTodo={selectTodo} key={todo.id} />
           ))}
         </table>
       )}
